@@ -14,7 +14,7 @@ map:
 agents:
   citizens:
   - agent_class: citizen
-    number: 5
+    number: 2
 exp:
   name: grid_smoke_test
   environment:

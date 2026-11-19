@@ -5,3 +5,6 @@ mock_llm.log
 my_config.yaml
 setup.out
 run.out
+models/
+*.out
+*.log

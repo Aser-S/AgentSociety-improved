@@ -1,0 +1,28 @@
+# Real run with your local Ollama (free, no API key). 2 agents, 1 simulated hour.
+# Before running:  ollama pull qwen2.5:3b
+llm:
+- provider: vllm                     # = any OpenAI-compatible server; Ollama is one
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama                    # Ollama ignores it, but a value is required
+  model: qwen2.5:3b
+  concurrency: 1
+  timeout: 60
+env:
+  db:
+    enabled: true
+    db_type: sqlite
+  home_dir: ./agentsociety_data
+map:
+  file_path: ./grid_map.pb
+agents:
+  citizens:
+  - agent_class: citizen
+    number: 2
+exp:
+  name: two_agents_ollama
+  environment:
+    start_tick: 28800                # 08:00 in seconds
+  workflow:
+  - type: step
+    steps: 6
+    ticks_per_step: 600              # 10 simulated minutes per step -> 08:00-09:00
