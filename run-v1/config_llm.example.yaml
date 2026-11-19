@@ -1,0 +1,27 @@
+# Copy to my_config.yaml, fill in your provider/key, then: ./run.sh my_config.yaml
+# provider: openai | deepseek | qwen | zhipuai | siliconflow | vllm
+llm:
+- provider: openai
+  base_url: null          # set for OpenAI-compatible endpoints
+  api_key: <YOUR-API-KEY>
+  model: gpt-4o-mini
+  concurrency: 20
+env:
+  db:
+    enabled: true
+    db_type: sqlite
+  home_dir: ./agentsociety_data
+map:
+  file_path: ./grid_map.pb
+agents:
+  citizens:
+  - agent_class: citizen
+    number: 10
+exp:
+  name: grid_llm_run
+  environment:
+    start_tick: 28800      # 08:00
+  workflow:
+  - type: step
+    steps: 12
+    ticks_per_step: 300    # 5 simulated minutes per step

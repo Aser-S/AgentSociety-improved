@@ -1,0 +1,25 @@
+llm:
+- provider: vllm
+  base_url: http://127.0.0.1:8765/v1
+  api_key: mock
+  model: mock-model
+  concurrency: 20
+env:
+  db:
+    enabled: true
+    db_type: sqlite
+  home_dir: ./agentsociety_data
+map:
+  file_path: ./grid_map.pb
+agents:
+  citizens:
+  - agent_class: citizen
+    number: 5
+exp:
+  name: grid_smoke_test
+  environment:
+    start_tick: 28800
+  workflow:
+  - type: step
+    steps: 3
+    ticks_per_step: 300
